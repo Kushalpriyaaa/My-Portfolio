@@ -1,0 +1,125 @@
+import "./hero.scss";
+import { motion } from "framer-motion";
+
+const textVariants = {
+  initial: {
+    x: -500,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.1,
+    },
+  },
+  scrollButton: {
+    opacity: 0,
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      repeatType: "loop",
+    },
+  },
+};
+
+const sliderVariants = {
+  initial: {
+    x: 0,
+  },
+  animate: {
+    x: 100,
+    transition: {
+      yoyo: Infinity,
+      duration: 5,
+      ease: "linear",
+    },
+  },
+};
+
+const Hero = () => {
+  const handleLatestWorksClick = () => {
+    // Replace with the actual link or navigation logic
+    window.open("/portfolio", "_blank");
+  };
+
+  const handleContactMeClick = () => {
+    // Replace with the actual link or navigation logic
+    window.open("/contact", "_blank");
+  };
+
+  return (
+    <section className="hero">
+      <div className="container">
+        <div className="content">
+          <motion.div
+            className="text-container"
+            variants={textVariants}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.h1 variants={textVariants}>KUSHAL PRIYA</motion.h1>
+            
+            {/* Typing Animation */}
+            <div className="wrapper">
+              <div className="static-txt">I'm a</div>
+              <ul className="dynamic-txts">
+                <li>
+                  <span>YouTuber</span>
+                </li>
+                <li>
+                  <span>Designer</span>
+                </li>
+                <li>
+                  <span>Developer</span>
+                </li>
+                <li>
+                  <span>Freelancer</span>
+                </li>
+              </ul>
+            </div>
+            {/* End of Typing Animation */}
+
+            <motion.div variants={textVariants} className="buttons">
+              <motion.button
+                variants={textVariants}
+                onClick={handleLatestWorksClick}
+              >
+                See the Latest Works
+              </motion.button>
+              <motion.button
+                variants={textVariants}
+                onClick={handleContactMeClick}
+              >
+                Contact Me
+              </motion.button>
+            </motion.div>
+            <motion.img
+              variants={textVariants}
+              animate="scrollButton"
+              src="/scroll.png"
+              alt="Scroll Indicator"
+              className="scroll-button"
+            />
+          </motion.div>
+
+          <motion.div
+            className="slidingTextContainer"
+            variants={sliderVariants}
+            initial="initial"
+            animate="animate"
+          >
+            Coder, Frontend Developer & ML Enthusiast
+          </motion.div>
+
+          <div className="imageContainer">
+            <img src="/file (1).png" alt="Hero Illustration" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
